@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <style>
+        th, td {
+            padding: 8px;
+            text-align: left;
+            border-bottom: 1px solid #DDD;
+        }
+
+        tr:hover {
+            background-color: #D6EEEE;
+        }
+    </style>
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+
+<body>
+<a th:href="@{/cars(count=${countPlusOne})}">Increase count</a>
+<a th:href="@{/cars(count=${countMinusOne})}">Decrease count</a>
+<a href="/cars">Without count</a>
+<table>
+    <tr>
+        <th>Brand</th>
+        <th>Model</th>
+        <th>Year</th>
+    </tr>
+    <th:block th:each="car : ${cars}">
+        <tr>
+            <td th:text="${car.getBrand()}"></td>
+            <td th:text="${car.getModel()}"></td>
+            <td th:text="${car.getYear()}"></td>
+        </tr>
+    </th:block>
+</table>
+<h1 th:text="${count}"/>
+
+</body>
+</html>
